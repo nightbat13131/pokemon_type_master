@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dksbowieubfb4"]
+
+[ext_resource type="Script" uid="uid://b6q7r7rw5ixug" path="res://standard_mode.gd" id="1_f3t8m"]
+[ext_resource type="Script" uid="uid://dtxdsmpyqyt0e" path="res://display_choice.gd" id="1_wkdu1"]
+[ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://choices/choice.gd" id="2_bgpbx"]
+[ext_resource type="Resource" uid="uid://bpxca8gb3gxu7" path="res://choices/choice_a.tres" id="2_bpedg"]
+[ext_resource type="Resource" uid="uid://bsws860m1c0w5" path="res://choices/choice_b.tres" id="4_ylphj"]
+[ext_resource type="Resource" uid="uid://6al0ihlbivqh" path="res://choices/choice_c.tres" id="5_b0vwh"]
+[ext_resource type="Resource" uid="uid://drwphtqjy84hp" path="res://choices/choice_d.tres" id="6_ows0h"]
+[ext_resource type="Resource" uid="uid://b0s5kbhvup2el" path="res://choices/choice_e.tres" id="7_dyq4x"]
+[ext_resource type="Resource" uid="uid://hwtk1tvag4gy" path="res://choices/choice_f.tres" id="8_snfdw"]
+[ext_resource type="Script" uid="uid://v0nue108imw8" path="res://display_color_bank.gd" id="9_ylphj"]
+[ext_resource type="Script" uid="uid://4xn0uyebpn57" path="res://display_current_guess.gd" id="11_b0vwh"]
+
+[node name="StandardGame" type="Node2D" unique_id=1501791113]
+script = ExtResource("1_f3t8m")
+all_choices = Array[ExtResource("2_bgpbx")]([ExtResource("2_bpedg"), ExtResource("4_ylphj"), ExtResource("5_b0vwh"), ExtResource("6_ows0h"), ExtResource("7_dyq4x"), ExtResource("8_snfdw")])
+
+[node name="Label" type="Label" parent="." unique_id=1816807997]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Just Guessing Colors into the correct order."
+
+[node name="Color Bank" type="VBoxContainer" parent="." unique_id=917885471]
+offset_left = 791.0
+offset_top = 103.0
+offset_right = 927.0
+offset_bottom = 196.0
+
+[node name="Label" type="Label" parent="Color Bank" unique_id=660433227]
+layout_mode = 2
+text = "ColorBank"
+
+[node name="DisplayColorBank" type="HBoxContainer" parent="Color Bank" unique_id=601764298]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("9_ylphj")
+
+[node name="Control" type="Button" parent="Color Bank/DisplayColorBank" unique_id=523345929]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 2
+text = "A"
+script = ExtResource("1_wkdu1")
+_choice = ExtResource("2_bpedg")
+
+[node name="Control2" type="Button" parent="Color Bank/DisplayColorBank" unique_id=934226055]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 2
+text = "_"
+script = ExtResource("1_wkdu1")
+
+[node name="Guess History" type="VBoxContainer" parent="." unique_id=326369705]
+offset_left = 466.0
+offset_top = 112.0
+offset_right = 573.0
+offset_bottom = 135.0
+
+[node name="Label3" type="Label" parent="Guess History" unique_id=241968565]
+layout_mode = 2
+text = "Guess History"
+
+[node name="Current Guess" type="VBoxContainer" parent="." unique_id=2032638647]
+offset_left = 64.0
+offset_top = 83.0
+offset_right = 175.0
+offset_bottom = 110.0
+
+[node name="Label2" type="Label" parent="Current Guess" unique_id=319794410]
+layout_mode = 2
+text = "Current Guess"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Current Guess" unique_id=341517253]
+layout_mode = 2
+
+[node name="DisplayCurrentGuess" type="HBoxContainer" parent="Current Guess/HBoxContainer" unique_id=1362920492 node_paths=PackedStringArray("bank", "submit_button")]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("11_b0vwh")
+bank = NodePath("../../../Color Bank/DisplayColorBank")
+submit_button = NodePath("../SubmitButton")
+
+[node name="Control3" type="Button" parent="Current Guess/HBoxContainer/DisplayCurrentGuess" unique_id=1572035733]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 2
+text = "A"
+script = ExtResource("1_wkdu1")
+_choice = ExtResource("2_bpedg")
+
+[node name="Control4" type="Button" parent="Current Guess/HBoxContainer/DisplayCurrentGuess" unique_id=1017179664]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 2
+text = "A"
+script = ExtResource("1_wkdu1")
+_choice = ExtResource("2_bpedg")
+
+[node name="SubmitButton" type="Button" parent="Current Guess/HBoxContainer" unique_id=1319350516]
+layout_mode = 2
+text = "Submit"
