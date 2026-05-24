@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bm3h5ta7v60eq"
+
+[deps]
+
+files=["res://pokemon_data/data_export_type_weakness_charts_csv_comma.defense.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.defense.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.normal.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.fire.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.water.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.electric.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.grass.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.ice.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.fighting.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.poison.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.ground.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.flying.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.psychic.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.bug.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.rock.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.ghost.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.dragon.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.dark.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.steel.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.fairy.translation"]
+
+source_file="res://pokemon_data/data_export_type_weakness_charts_csv_comma.csv"
+dest_files=["res://pokemon_data/data_export_type_weakness_charts_csv_comma.defense.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.defense.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.normal.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.fire.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.water.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.electric.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.grass.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.ice.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.fighting.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.poison.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.ground.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.flying.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.psychic.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.bug.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.rock.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.ghost.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.dragon.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.dark.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.steel.translation", "res://pokemon_data/data_export_type_weakness_charts_csv_comma.fairy.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
