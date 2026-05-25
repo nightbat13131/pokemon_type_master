@@ -20,7 +20,6 @@ func set_bank_list(list: Array[Choice]) -> void:
 			display.set_choice(choice)
 		else:
 			display.hide()
-		
 		_update_choice(index, list[index])
 
 func _update_choice(index: int, choice: Choice) -> void:
@@ -30,7 +29,8 @@ func _update_choice(index: int, choice: Choice) -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node is DisplayChoice:
-		assert(!node.choice_pressed.is_connected(_on_choice_pressed))
-		node.choice_pressed.connect(_on_choice_pressed)
+		assert(!node.choice_pressed.is_connected(_on_display_pressed))
+		node.choice_pressed.connect(_on_display_pressed)
 
-func _on_choice_pressed(choice: Choice) -> void: choice_request.emit(choice)
+func _on_display_pressed(display: DisplayChoice, _index: int) -> void: 
+	choice_request.emit(display.get_choice())

@@ -11,88 +11,187 @@
 [ext_resource type="Resource" uid="uid://hwtk1tvag4gy" path="res://choices/choice_f.tres" id="8_snfdw"]
 [ext_resource type="Script" uid="uid://v0nue108imw8" path="res://display_color_bank.gd" id="9_ylphj"]
 [ext_resource type="Script" uid="uid://4xn0uyebpn57" path="res://display_current_guess.gd" id="11_b0vwh"]
+[ext_resource type="Script" uid="uid://cdgtrpefs1c4y" path="res://guess_history.gd" id="11_dyq4x"]
+[ext_resource type="Script" uid="uid://cic3vi6gdbs5s" path="res://show_guess.gd" id="11_ows0h"]
+[ext_resource type="Script" uid="uid://8y004cs87iia" path="res://display_results.gd" id="13_vwspm"]
+[ext_resource type="Script" uid="uid://ckkeqo3rwt35l" path="res://mouse_helper.gd" id="14_snfdw"]
 
 [node name="StandardGame" type="Node2D" unique_id=1501791113]
 script = ExtResource("1_f3t8m")
 all_choices = Array[ExtResource("2_bgpbx")]([ExtResource("2_bpedg"), ExtResource("4_ylphj"), ExtResource("5_b0vwh"), ExtResource("6_ows0h"), ExtResource("7_dyq4x"), ExtResource("8_snfdw")])
 
-[node name="Label" type="Label" parent="." unique_id=1816807997]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1325693386]
+
+[node name="MouseHelper" type="Node2D" parent="CanvasLayer" unique_id=1479412093]
+script = ExtResource("14_snfdw")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=2072830351]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=5879408]
+layout_mode = 0
+offset_right = 437.0
+offset_bottom = 311.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=1816807997]
+layout_mode = 2
+size_flags_horizontal = 4
 text = "Just Guessing Colors into the correct order."
+vertical_alignment = 1
 
-[node name="Color Bank" type="VBoxContainer" parent="." unique_id=917885471]
-offset_left = 791.0
-offset_top = 103.0
-offset_right = 927.0
-offset_bottom = 196.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1329415555]
+layout_mode = 2
 
-[node name="Label" type="Label" parent="Color Bank" unique_id=660433227]
+[node name="VSeparator2" type="VSeparator" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=253920881]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1994721009]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1361018604]
+layout_mode = 2
+
+[node name="Color Bank Holder" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=917885471]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Color Bank Holder" unique_id=660433227]
 layout_mode = 2
 text = "ColorBank"
 
-[node name="DisplayColorBank" type="HBoxContainer" parent="Color Bank" unique_id=601764298]
+[node name="DisplayColorBank" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Color Bank Holder" unique_id=601764298]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("9_ylphj")
 
-[node name="Control" type="Button" parent="Color Bank/DisplayColorBank" unique_id=523345929]
+[node name="Control" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Color Bank Holder/DisplayColorBank" unique_id=523345929]
 custom_minimum_size = Vector2(66, 66)
 layout_mode = 2
 text = "A"
 script = ExtResource("1_wkdu1")
+event_debug = null
 _choice = ExtResource("2_bpedg")
 
-[node name="Control2" type="Button" parent="Color Bank/DisplayColorBank" unique_id=934226055]
+[node name="Control2" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Color Bank Holder/DisplayColorBank" unique_id=934226055]
 custom_minimum_size = Vector2(66, 66)
 layout_mode = 2
 text = "_"
 script = ExtResource("1_wkdu1")
+event_debug = null
 
-[node name="Guess History" type="VBoxContainer" parent="." unique_id=326369705]
-offset_left = 466.0
-offset_top = 112.0
-offset_right = 573.0
-offset_bottom = 135.0
-
-[node name="Label3" type="Label" parent="Guess History" unique_id=241968565]
+[node name="Current Guess Holder" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2032638647]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Guess History"
+metadata/_edit_group_ = true
 
-[node name="Current Guess" type="VBoxContainer" parent="." unique_id=2032638647]
-offset_left = 64.0
-offset_top = 83.0
-offset_right = 175.0
-offset_bottom = 110.0
-
-[node name="Label2" type="Label" parent="Current Guess" unique_id=319794410]
+[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Current Guess Holder" unique_id=319794410]
 layout_mode = 2
 text = "Current Guess"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Current Guess" unique_id=341517253]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Current Guess Holder" unique_id=341517253]
 layout_mode = 2
 
-[node name="DisplayCurrentGuess" type="HBoxContainer" parent="Current Guess/HBoxContainer" unique_id=1362920492 node_paths=PackedStringArray("bank", "submit_button")]
+[node name="DisplayCurrentGuess" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Current Guess Holder/HBoxContainer" unique_id=1362920492 node_paths=PackedStringArray("bank", "history", "submit_button")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("11_b0vwh")
-bank = NodePath("../../../Color Bank/DisplayColorBank")
+bank = NodePath("../../../Color Bank Holder/DisplayColorBank")
+history = NodePath("../../../../Guess History")
 submit_button = NodePath("../SubmitButton")
 
-[node name="Control3" type="Button" parent="Current Guess/HBoxContainer/DisplayCurrentGuess" unique_id=1572035733]
+[node name="Control3" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Current Guess Holder/HBoxContainer/DisplayCurrentGuess" unique_id=1572035733]
 custom_minimum_size = Vector2(66, 66)
 layout_mode = 2
 text = "A"
 script = ExtResource("1_wkdu1")
 _choice = ExtResource("2_bpedg")
 
-[node name="Control4" type="Button" parent="Current Guess/HBoxContainer/DisplayCurrentGuess" unique_id=1017179664]
+[node name="Control4" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Current Guess Holder/HBoxContainer/DisplayCurrentGuess" unique_id=1017179664]
 custom_minimum_size = Vector2(66, 66)
 layout_mode = 2
 text = "A"
 script = ExtResource("1_wkdu1")
+event_debug = null
 _choice = ExtResource("2_bpedg")
 
-[node name="SubmitButton" type="Button" parent="Current Guess/HBoxContainer" unique_id=1319350516]
+[node name="SubmitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Current Guess Holder/HBoxContainer" unique_id=1319350516]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Submit"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1128633290]
+layout_mode = 2
+
+[node name="GameConfigHolder" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1878683474]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1674793125]
+layout_mode = 2
+text = "Choices"
+
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1724085622]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1095287257]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=425258760]
+layout_mode = 2
+text = "Length"
+
+[node name="SpinBox2" type="SpinBox" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1833999791]
+layout_mode = 2
+
+[node name="ButtonNewGame" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=698149736]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Game"
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=563923176]
+layout_mode = 2
+
+[node name="VSeparator3" type="VSeparator" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1463952135]
+layout_mode = 2
+
+[node name="Guess History" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=326369705]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("11_dyq4x")
+metadata/_edit_group_ = true
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Guess History" unique_id=241968565]
+layout_mode = 2
+text = "Guess History"
+
+[node name="GuessHolder" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Guess History" unique_id=647811096]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DisplayGuess" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Guess History/GuessHolder" unique_id=1870499764]
+layout_mode = 2
+script = ExtResource("11_ows0h")
+
+[node name="Control5" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Guess History/GuessHolder/DisplayGuess" unique_id=1754289396]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 2
+text = "A"
+script = ExtResource("1_wkdu1")
+_choice = ExtResource("2_bpedg")
+
+[node name="DisplayResults" type="Control" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Guess History/GuessHolder/DisplayGuess" unique_id=1310970782]
+layout_mode = 2
+script = ExtResource("13_vwspm")
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=698728079]
+layout_mode = 2
