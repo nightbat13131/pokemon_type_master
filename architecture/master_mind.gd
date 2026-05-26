@@ -2,7 +2,7 @@ class_name StandardGame extends Node2D
 
 @export var all_choices: Array[Choice]
 @export var all_type_pairings : Array[TypePairs]
-@onready var display_color_bank: DisplayColorBank = %DisplayColorBank
+@onready var display_color_bank: DisplayBank = %DisplayColorBank
 @onready var display_current_guess: DispalyCurrentGuess = %DisplayCurrentGuess
 @onready var guess_history: GuessHistory = %"Guess History"
 @onready var submit_button: Button = %SubmitButton
@@ -43,10 +43,10 @@ func _generate_choices(count: int) -> void:
 func _generate_pairs() -> void:
 	#var holder := all_type_pairings.duplicate()
 	this_round_pairings = []
-	var count := 0
+	#var count := 0
 	for pair: TypePairs in all_type_pairings:
 		for choice: Choice in this_round_choices:
-			count += 1
+	#		count += 1
 			if pair.is_included(choice):
 				this_round_pairings.append(pair)
 				break

@@ -1,4 +1,4 @@
-class_name DisplayColorBank extends Container
+class_name DisplayBank extends Container
 
 signal choice_request(choice: Choice)
 
@@ -8,7 +8,7 @@ func _ready() -> void:
 		_on_child_entered_tree(child)
 
 func set_bank_list(list: Array[Choice]) -> void:
-	var display: DisplayChoice
+	var display: BankChoice
 	var choice: Choice
 	for index in range(max(get_child_count(), list.size())):
 		if index >= list.size():
@@ -16,19 +16,13 @@ func set_bank_list(list: Array[Choice]) -> void:
 		else: 
 			choice = list.get(index)
 		if get_child_count() <= index:
-			add_child(DisplayChoice.new())
+			add_child(BankChoice.new())
 		display = get_child(index)
 		display.set_choice(choice)
 		if choice:
 			display.show()
 		else:
 			display.hide()
-		#_update_choice(index, choice)
-
-#func _update_choice(index: int, choice: Choice) -> void:
-	#var current_choice : DisplayChoice = get_child(index)
-	#assert(current_choice != null)
-	#current_choice.set_choice(choice)
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node is DisplayChoice:

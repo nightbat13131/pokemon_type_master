@@ -1,6 +1,6 @@
 class_name Guess extends Answer
 
-const UNIT = DisplayChoice.SIZE.x *.5
+const UNIT = DisplayChoice.GUESS_SIZE.x *.5
 const RESULT_RADIUS = UNIT *.45
 
 static var _type_pairings : Array[TypePairs]
@@ -21,6 +21,12 @@ enum TypingMatch {
 
 var _results_match : Array[MatchType]
 var _results_type : Array[TypingMatch]
+var _rows := 2
+var _cols := 2
+
+func add_choice(choice: Choice) -> void:
+	super.add_choice(choice)
+	_cols = ceil(size()*.5)
 
 func check_answer(answer: Answer) -> void:
 	assert(answer.size() == self.size())
@@ -44,8 +50,8 @@ func check_answer(answer: Answer) -> void:
 	for remaining_answer in _answer:
 		if remaining_answer != null:
 			_results_match.append(MatchType.NO_MATCH)
-	#print(_results_match)
-	print(_results_type)
+	##print(_results_match)
+	#print(_results_type)
 
 func is_correct() -> bool:
 	assert(!_results_match.is_empty())
@@ -54,31 +60,23 @@ func is_correct() -> bool:
 			return false
 	return true
 
-func get_display_size() -> Vector2:
-	var out := DisplayChoice.SIZE
-	if size() < 5:
-		return out
-	out.x = UNIT * ceil(size() * .5)
-	return out
+func get_display_size() -> Vector2: return Vector2(_cols * UNIT, _rows * UNIT)
 
-func remote_draw(node: CanvasItem) -> void:
+func remote_draw_match_results(node: CanvasItem) -> void:
 	var _size := get_display_size()
 	node.draw_polygon(
 		[Vector2.ZERO, Vector2(_size.x, 0), _size, Vector2(0, _size.y) ], 
 		[Color.AQUAMARINE]
 	)
-	var rows := 2
-	var cols : int = ceil(size()*.5)
 	var index := 0
 	var center := Vector2.ZERO
-	for row in range(rows):
-		center.y = DisplayChoice.SIZE.y * .25
-		center.y += ( DisplayChoice.SIZE.y * .5 ) * row
-		center.x = DisplayChoice.SIZE.x * -.25 
-		for col in range(cols):
+	for row in range(_rows):
+		center.y = UNIT *.5
+		center.y += UNIT * row
+		center.x = UNIT *.5
+		for col in range(_cols):
 			if index >= size():
 				break
-			center.x += DisplayChoice.SIZE.y * .5
 			match _results_match[index]:
 				MatchType.NO_MATCH:
 					_draw_no_match(node, center)
@@ -86,6 +84,7 @@ func remote_draw(node: CanvasItem) -> void:
 					_draw_perfect_match(node, center)
 				MatchType.WRONG_POS:
 					_draw_wrong_pos(node, center)
+			center.x += UNIT
 			index += 1
 
 func _draw_perfect_match(node: CanvasItem, center: Vector2) -> void:
@@ -115,7 +114,7 @@ static func draw_match_type(node: CanvasItem, type_match: TypingMatch ) -> void:
 	var font : Font = node.get_theme_default_font()
 	node.draw_char(font, Vector2.DOWN * 15, text)
 
-func apply_display_index(node: DisplayChoice, index: int) -> void:
+func apply_display_index(node: GuessChoice, index: int) -> void:
 	node.set_choice(get_choice(index))
 	node.set_result_type(_results_type.get(index))
 	node.set_index(index)
@@ -146,4 +145,3 @@ class PairingTester:
 		for pairing in _type_pairings:
 			if pairing.is_included(focus):
 				_type_pairs[focus].append(pairing)
-		

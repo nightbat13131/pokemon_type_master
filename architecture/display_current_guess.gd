@@ -2,7 +2,7 @@ class_name DispalyCurrentGuess extends HBoxContainer
 
 signal submit_guess(guess: Guess)
 
-@export var bank : DisplayColorBank
+@export var bank : DisplayBank
 @export var history: GuessHistory
 @export var submit_button : Button
 
@@ -15,10 +15,6 @@ func _ready() -> void:
 	submit_button.pressed.connect(_on_submit)
 	assert(history != null)
 	history.choice_request.connect(apply_choice)
-	child_entered_tree.connect(_on_child_entered_tree)
-	for child in get_children():
-		assert(child is DisplayChoice)
-		_on_child_entered_tree(child)
 
 func set_guess_length(length: int = 4) -> void:
 	_current_length = length
@@ -30,26 +26,27 @@ func set_guess_length(length: int = 4) -> void:
 			get_child(i).queue_free()
 	elif delta < 0 :
 		for i in range(abs(delta)): 
-			add_child(DisplayChoice.new())
+			add_child(CurrentChoice.new())
 	guess_start() 
 
 func guess_start() -> void:
-	for each: DisplayChoice in get_children():
-		each.set_choice(null, true)
+	for each: CurrentChoice in get_children():
+		assert(each is CurrentChoice)
+		each.set_choice(null)
 
 func apply_choice(choice: Choice, index: int = -1) -> void:
-	var target : DisplayChoice
+	var target : CurrentChoice
 	if index < 0:
 		target = get_next_empty()
 	else:
 		assert(index < get_child_count())
 		target = get_child(index)
 	if target:
-		target.set_choice(choice, true)
+		target.set_choice(choice)
 
-func get_next_empty() -> DisplayChoice:
+func get_next_empty() -> CurrentChoice:
 	for each in get_children():
-		assert(each is DisplayChoice)
+		assert(each is CurrentChoice)
 		if !each.has_choice():
 			return each
 	return null
@@ -60,14 +57,7 @@ func _on_submit() -> void:
 	if is_full():
 		var _guess := Guess.new()
 		for each in get_children():
-			assert(each is DisplayChoice)
-			if each is DisplayChoice:
+			assert(each is CurrentChoice)
+			if each is CurrentChoice:
 				_guess.add_choice(each.pop_choice())
 		submit_guess.emit(_guess)
-
-func _on_child_entered_tree(node: Node) -> void:
-	if node is DisplayChoice:
-		assert(!node.choice_pressed.is_connected(_on_display_pressed))
-		node.choice_pressed.connect(_on_display_pressed)
-
-func _on_display_pressed(node: DisplayChoice, _index: int) -> void: node.clear_choice()

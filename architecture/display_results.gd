@@ -3,7 +3,7 @@ class_name DisplayResults extends Control
 var _results: Guess
 
 func _ready() -> void:
-	set_custom_minimum_size(DisplayChoice.SIZE)
+	set_custom_minimum_size(DisplayChoice.GUESS_SIZE)
 
 func set_results(resutls: Guess) -> void:
 	_results = resutls
@@ -12,4 +12,4 @@ func set_results(resutls: Guess) -> void:
 
 func _draw() -> void:
 	if _results:
-		_results.remote_draw(self)
+		_results.remote_draw_match_results(self)

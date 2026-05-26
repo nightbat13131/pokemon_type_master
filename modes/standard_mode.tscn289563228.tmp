@@ -1,24 +1,23 @@
 [gd_scene format=3 uid="uid://dksbowieubfb4"]
 
-[ext_resource type="Script" uid="uid://b6q7r7rw5ixug" path="res://architecture/master_mind.gd" id="1_l0mgr"]
-[ext_resource type="Script" uid="uid://dtxdsmpyqyt0e" path="res://architecture/choices/display_choices/choice_button.gd" id="1_wkdu1"]
-[ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://architecture/choices/choice.gd" id="2_bgpbx"]
-[ext_resource type="Resource" uid="uid://bpxca8gb3gxu7" path="res://architecture/choices/color/choice_a.tres" id="2_bpedg"]
-[ext_resource type="Resource" uid="uid://bsws860m1c0w5" path="res://architecture/choices/color/choice_b.tres" id="4_ylphj"]
-[ext_resource type="Resource" uid="uid://6al0ihlbivqh" path="res://architecture/choices/color/choice_c.tres" id="5_b0vwh"]
-[ext_resource type="Resource" uid="uid://drwphtqjy84hp" path="res://architecture/choices/color/choice_d.tres" id="6_ows0h"]
-[ext_resource type="Resource" uid="uid://b0s5kbhvup2el" path="res://architecture/choices/color/choice_e.tres" id="7_dyq4x"]
-[ext_resource type="Resource" uid="uid://hwtk1tvag4gy" path="res://architecture/choices/color/choice_f.tres" id="8_snfdw"]
+[ext_resource type="Script" uid="uid://b6q7r7rw5ixug" path="res://architecture/standard_mode.gd" id="1_f3t8m"]
+[ext_resource type="Script" uid="uid://dtxdsmpyqyt0e" path="res://architecture/choice_button.gd" id="1_wkdu1"]
+[ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://choices/choice.gd" id="2_bgpbx"]
+[ext_resource type="Resource" uid="uid://bpxca8gb3gxu7" path="res://choices/color/choice_a.tres" id="2_bpedg"]
+[ext_resource type="Resource" uid="uid://bsws860m1c0w5" path="res://choices/color/choice_b.tres" id="4_ylphj"]
+[ext_resource type="Resource" uid="uid://6al0ihlbivqh" path="res://choices/color/choice_c.tres" id="5_b0vwh"]
+[ext_resource type="Resource" uid="uid://drwphtqjy84hp" path="res://choices/color/choice_d.tres" id="6_ows0h"]
+[ext_resource type="Resource" uid="uid://b0s5kbhvup2el" path="res://choices/color/choice_e.tres" id="7_dyq4x"]
+[ext_resource type="Resource" uid="uid://hwtk1tvag4gy" path="res://choices/color/choice_f.tres" id="8_snfdw"]
 [ext_resource type="Script" uid="uid://v0nue108imw8" path="res://architecture/display_color_bank.gd" id="9_ylphj"]
 [ext_resource type="Script" uid="uid://4xn0uyebpn57" path="res://architecture/display_current_guess.gd" id="11_b0vwh"]
 [ext_resource type="Script" uid="uid://cdgtrpefs1c4y" path="res://architecture/guess_history.gd" id="11_dyq4x"]
-[ext_resource type="Script" uid="uid://dupy2ehlj0em0" path="res://architecture/choices/display_choices/current_choice.gd" id="11_gj1du"]
 [ext_resource type="Script" uid="uid://cic3vi6gdbs5s" path="res://architecture/show_guess.gd" id="11_ows0h"]
 [ext_resource type="Script" uid="uid://8y004cs87iia" path="res://architecture/display_results.gd" id="13_vwspm"]
 [ext_resource type="Script" uid="uid://ckkeqo3rwt35l" path="res://architecture/mouse_helper.gd" id="14_snfdw"]
 
 [node name="StandardGame" type="Node2D" unique_id=1501791113]
-script = ExtResource("1_l0mgr")
+script = ExtResource("1_f3t8m")
 all_choices = Array[ExtResource("2_bgpbx")]([ExtResource("2_bpedg"), ExtResource("4_ylphj"), ExtResource("5_b0vwh"), ExtResource("6_ows0h"), ExtResource("7_dyq4x"), ExtResource("8_snfdw")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1325693386]
@@ -95,14 +94,14 @@ submit_button = NodePath("../SubmitButton")
 custom_minimum_size = Vector2(66, 66)
 layout_mode = 2
 text = "A"
-script = ExtResource("11_gj1du")
+script = ExtResource("1_wkdu1")
 _choice = ExtResource("2_bpedg")
 
 [node name="Control4" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Current Guess Holder/HBoxContainer/DisplayCurrentGuess" unique_id=1017179664]
 custom_minimum_size = Vector2(66, 66)
 layout_mode = 2
 text = "A"
-script = ExtResource("11_gj1du")
+script = ExtResource("1_wkdu1")
 _choice = ExtResource("2_bpedg")
 
 [node name="SubmitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Current Guess Holder/HBoxContainer" unique_id=1319350516]
@@ -186,6 +185,6 @@ script = ExtResource("13_vwspm")
 [node name="VSeparator" type="VSeparator" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=698728079]
 layout_mode = 2
 
-[node name="MouseHelper" type="Node2D" parent="CanvasLayer" unique_id=1292913546]
+[node name="MouseHelper" type="Node2D" parent="." unique_id=1292913546]
 script = ExtResource("14_snfdw")
 metadata/_custom_type_script = "uid://ckkeqo3rwt35l"
