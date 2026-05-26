@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Choice" format=3 uid="uid://b2nnyswfkkn1h"]
+
+[ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://choices/choice.gd" id="1_t4uq1"]
+
+[resource]
+script = ExtResource("1_t4uq1")
+text = "8<"
+background_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
+metadata/_custom_type_script = "uid://cwdb12m8bbdj"

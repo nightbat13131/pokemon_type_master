@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Choice" format=3 uid="uid://buscd0ifjj4m5"]
+
+[ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://choices/choice.gd" id="1_wxd7n"]
+
+[resource]
+script = ExtResource("1_wxd7n")
+text = "@"
+background_color = Color(0.2851994, 0.18629012, 0.03319205, 1)
+text_color = Color(0.66413754, 0.7914957, 0.7558213, 1)
+metadata/_custom_type_script = "uid://cwdb12m8bbdj"

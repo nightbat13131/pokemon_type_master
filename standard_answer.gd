@@ -10,3 +10,8 @@ func size() -> int: return _choices.size()
 func get_copy_choices() -> Array[Choice] : return _choices.duplicate()
 
 func get_choices() -> Array[Choice] : return _choices
+
+func get_choice(index: int) -> Choice:
+	if index >= size():
+		return null
+	return _choices[index]

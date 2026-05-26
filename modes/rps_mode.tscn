@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://okhi2yrlvprk"]
+
+[ext_resource type="PackedScene" uid="uid://dksbowieubfb4" path="res://modes/standard_mode.tscn" id="1_2q437"]
+[ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://choices/choice.gd" id="2_b7o3g"]
+[ext_resource type="Resource" uid="uid://s34syr707lcn" path="res://choices/r_p_s/paper.tres" id="3_4yiwe"]
+[ext_resource type="Resource" uid="uid://buscd0ifjj4m5" path="res://choices/r_p_s/rock.tres" id="4_v7cd8"]
+[ext_resource type="Resource" uid="uid://b2nnyswfkkn1h" path="res://choices/r_p_s/scisors.tres" id="5_b7o3g"]
+[ext_resource type="Resource" uid="uid://c55dohvden31p" path="res://choices/r_p_s/void.tres" id="6_acgrr"]
+[ext_resource type="Script" uid="uid://cwdb12m8bbdj" path="res://choices/choice_pairs.gd" id="7_acgrr"]
+[ext_resource type="Resource" uid="uid://b3tb4sdje5vh6" path="res://choices/r_p_s/p_s.tres" id="8_3hm34"]
+[ext_resource type="Resource" uid="uid://bj1lk7h6vps6c" path="res://choices/r_p_s/r_p.tres" id="9_ty3yw"]
+[ext_resource type="Resource" uid="uid://cc1a3ghdjka1s" path="res://choices/r_p_s/s_r.tres" id="10_660fc"]
+
+[node name="RPSGame" unique_id=1501791113 instance=ExtResource("1_2q437")]
+all_choices = Array[ExtResource("2_b7o3g")]([ExtResource("3_4yiwe"), ExtResource("4_v7cd8"), ExtResource("5_b7o3g"), ExtResource("6_acgrr")])
+all_type_pairings = Array[ExtResource("7_acgrr")]([ExtResource("8_3hm34"), ExtResource("9_ty3yw"), ExtResource("10_660fc")])
+
+[node name="Label" parent="CanvasLayer/Control/VBoxContainer" parent_id_path=PackedInt32Array(5879408) index="0" unique_id=1816807997]
+text = "Rock - Paper - Scissors - Noid"
+
+[node name="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="0" unique_id=1674793125]
+visible = false
+
+[node name="SpinBoxChoices" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="1" unique_id=1724085622]
+visible = false
+min_value = 4.0
+max_value = 4.0
+value = 4.0
+
+[node name="Control" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="2" unique_id=1095287257]
+visible = false

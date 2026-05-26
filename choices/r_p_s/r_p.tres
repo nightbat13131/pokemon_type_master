@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TypePairs" format=3 uid="uid://bj1lk7h6vps6c"]
+
+[ext_resource type="Resource" uid="uid://buscd0ifjj4m5" path="res://choices/r_p_s/rock.tres" id="1_3vxhp"]
+[ext_resource type="Resource" uid="uid://s34syr707lcn" path="res://choices/r_p_s/paper.tres" id="2_joce7"]
+[ext_resource type="Script" uid="uid://cwdb12m8bbdj" path="res://choices/choice_pairs.gd" id="3_1npl3"]
+
+[resource]
+script = ExtResource("3_1npl3")
+a_ = ExtResource("1_3vxhp")
+b_ = ExtResource("2_joce7")
+a_b_result = 2
+b_a_result = 1
+metadata/_custom_type_script = "uid://cwdb12m8bbdj"

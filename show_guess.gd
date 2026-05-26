@@ -13,17 +13,13 @@ func set_guess(guess: Guess) -> void:
 
 func _setup_guess() -> void:
 	var display_choice : DisplayChoice
-	var count := 0
-	for choice in _guess.get_choices():
+	for index in range(_guess.size()):
 		display_choice = DisplayChoice.new()
-		display_choice.set_choice(choice)
-		display_choice.set_index(count)
-		count += 1
+		_guess.apply_display_index(display_choice, index)
 		add_child(display_choice)
 	var show_results = DisplayResults.new()
 	add_child(show_results)
 	show_results.set_results(_guess)
-	
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node is DisplayChoice:

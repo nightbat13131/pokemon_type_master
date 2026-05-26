@@ -1,3 +1,4 @@
+@tool
 class_name Choice extends Resource
 
 @export var text: String
@@ -10,6 +11,8 @@ const DRAW_RADIUS = 30
 
 func remote_draw(node: CanvasItem, center: Vector2) -> void:
 	_common_draw(node, center, background_color, text_color, text)
+
+#func get_type_result(_attacker: Choice) -> Guess.TypingMatch: return Guess.TypingMatch.NA
 
 static func _common_draw(node: CanvasItem, center: Vector2, bg_color: Color, tx_color: Color, string: String) -> void:
 	node.draw_circle(center, DRAW_RADIUS, bg_color)

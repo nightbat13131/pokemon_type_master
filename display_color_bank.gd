@@ -11,21 +11,24 @@ func set_bank_list(list: Array[Choice]) -> void:
 	var display: DisplayChoice
 	var choice: Choice
 	for index in range(max(get_child_count(), list.size())):
-		choice = list.get(index)
+		if index >= list.size():
+			choice = null
+		else: 
+			choice = list.get(index)
 		if get_child_count() <= index:
 			add_child(DisplayChoice.new())
 		display = get_child(index)
-			
+		display.set_choice(choice)
 		if choice:
-			display.set_choice(choice)
+			display.show()
 		else:
 			display.hide()
-		_update_choice(index, list[index])
+		#_update_choice(index, choice)
 
-func _update_choice(index: int, choice: Choice) -> void:
-	var current_choice : DisplayChoice = get_child(index)
-	assert(current_choice != null)
-	current_choice.set_choice(choice)
+#func _update_choice(index: int, choice: Choice) -> void:
+	#var current_choice : DisplayChoice = get_child(index)
+	#assert(current_choice != null)
+	#current_choice.set_choice(choice)
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node is DisplayChoice:

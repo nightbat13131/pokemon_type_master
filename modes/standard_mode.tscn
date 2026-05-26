@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://b6q7r7rw5ixug" path="res://standard_mode.gd" id="1_f3t8m"]
 [ext_resource type="Script" uid="uid://dtxdsmpyqyt0e" path="res://display_choice.gd" id="1_wkdu1"]
 [ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://choices/choice.gd" id="2_bgpbx"]
-[ext_resource type="Resource" uid="uid://bpxca8gb3gxu7" path="res://choices/choice_a.tres" id="2_bpedg"]
-[ext_resource type="Resource" uid="uid://bsws860m1c0w5" path="res://choices/choice_b.tres" id="4_ylphj"]
-[ext_resource type="Resource" uid="uid://6al0ihlbivqh" path="res://choices/choice_c.tres" id="5_b0vwh"]
-[ext_resource type="Resource" uid="uid://drwphtqjy84hp" path="res://choices/choice_d.tres" id="6_ows0h"]
-[ext_resource type="Resource" uid="uid://b0s5kbhvup2el" path="res://choices/choice_e.tres" id="7_dyq4x"]
-[ext_resource type="Resource" uid="uid://hwtk1tvag4gy" path="res://choices/choice_f.tres" id="8_snfdw"]
+[ext_resource type="Resource" uid="uid://bpxca8gb3gxu7" path="res://choices/color/choice_a.tres" id="2_bpedg"]
+[ext_resource type="Resource" uid="uid://bsws860m1c0w5" path="res://choices/color/choice_b.tres" id="4_ylphj"]
+[ext_resource type="Resource" uid="uid://6al0ihlbivqh" path="res://choices/color/choice_c.tres" id="5_b0vwh"]
+[ext_resource type="Resource" uid="uid://drwphtqjy84hp" path="res://choices/color/choice_d.tres" id="6_ows0h"]
+[ext_resource type="Resource" uid="uid://b0s5kbhvup2el" path="res://choices/color/choice_e.tres" id="7_dyq4x"]
+[ext_resource type="Resource" uid="uid://hwtk1tvag4gy" path="res://choices/color/choice_f.tres" id="8_snfdw"]
 [ext_resource type="Script" uid="uid://v0nue108imw8" path="res://display_color_bank.gd" id="9_ylphj"]
 [ext_resource type="Script" uid="uid://4xn0uyebpn57" path="res://display_current_guess.gd" id="11_b0vwh"]
 [ext_resource type="Script" uid="uid://cdgtrpefs1c4y" path="res://guess_history.gd" id="11_dyq4x"]
@@ -21,9 +21,6 @@ script = ExtResource("1_f3t8m")
 all_choices = Array[ExtResource("2_bgpbx")]([ExtResource("2_bpedg"), ExtResource("4_ylphj"), ExtResource("5_b0vwh"), ExtResource("6_ows0h"), ExtResource("7_dyq4x"), ExtResource("8_snfdw")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1325693386]
-
-[node name="MouseHelper" type="Node2D" parent="CanvasLayer" unique_id=1479412093]
-script = ExtResource("14_snfdw")
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=2072830351]
 layout_mode = 3
@@ -73,21 +70,6 @@ unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("9_ylphj")
 
-[node name="Control" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Color Bank Holder/DisplayColorBank" unique_id=523345929]
-custom_minimum_size = Vector2(66, 66)
-layout_mode = 2
-text = "A"
-script = ExtResource("1_wkdu1")
-event_debug = null
-_choice = ExtResource("2_bpedg")
-
-[node name="Control2" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Color Bank Holder/DisplayColorBank" unique_id=934226055]
-custom_minimum_size = Vector2(66, 66)
-layout_mode = 2
-text = "_"
-script = ExtResource("1_wkdu1")
-event_debug = null
-
 [node name="Current Guess Holder" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2032638647]
 unique_name_in_owner = true
 layout_mode = 2
@@ -120,7 +102,6 @@ custom_minimum_size = Vector2(66, 66)
 layout_mode = 2
 text = "A"
 script = ExtResource("1_wkdu1")
-event_debug = null
 _choice = ExtResource("2_bpedg")
 
 [node name="SubmitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/Current Guess Holder/HBoxContainer" unique_id=1319350516]
@@ -134,24 +115,32 @@ layout_mode = 2
 [node name="GameConfigHolder" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1878683474]
 unique_name_in_owner = true
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1674793125]
 layout_mode = 2
 text = "Choices"
 
-[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1724085622]
+[node name="SpinBoxChoices" type="SpinBox" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1724085622]
+unique_name_in_owner = true
 layout_mode = 2
+min_value = 3.0
+max_value = 10.0
+value = 3.0
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1095287257]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=425258760]
 layout_mode = 2
 text = "Length"
 
-[node name="SpinBox2" type="SpinBox" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1833999791]
+[node name="SpinBoxLength" type="SpinBox" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" unique_id=1833999791]
+unique_name_in_owner = true
 layout_mode = 2
+min_value = 3.0
+value = 3.0
 
 [node name="ButtonNewGame" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=698149736]
 unique_name_in_owner = true
@@ -195,3 +184,6 @@ script = ExtResource("13_vwspm")
 
 [node name="VSeparator" type="VSeparator" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=698728079]
 layout_mode = 2
+
+[node name="MouseHelper" type="Node2D" parent="CanvasLayer" unique_id=1479412093]
+script = ExtResource("14_snfdw")
