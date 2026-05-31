@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://bivgf4imvkwps"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00avf"]
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_00avf")
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5

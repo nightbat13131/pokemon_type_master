@@ -15,17 +15,17 @@
 all_choices = Array[ExtResource("2_b7o3g")]([ExtResource("3_4yiwe"), ExtResource("4_v7cd8"), ExtResource("5_b7o3g"), ExtResource("6_acgrr")])
 all_type_pairings = Array[ExtResource("7_acgrr")]([ExtResource("8_3hm34"), ExtResource("9_ty3yw"), ExtResource("10_660fc")])
 
-[node name="Label" parent="CanvasLayer/Control/VBoxContainer" parent_id_path=PackedInt32Array(5879408) index="0" unique_id=1816807997]
+[node name="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer2" parent_id_path=PackedInt32Array(553065913) index="1" unique_id=1816807997]
 text = "Rock - Paper - Scissors - Noid"
 
-[node name="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="0" unique_id=1674793125]
+[node name="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="0" unique_id=1674793125]
 visible = false
 
-[node name="SpinBoxChoices" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="1" unique_id=1724085622]
+[node name="SpinBoxChoices" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="1" unique_id=1724085622]
 visible = false
 min_value = 4.0
 max_value = 4.0
 value = 4.0
 
-[node name="Control" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="2" unique_id=1095287257]
+[node name="Control" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="2" unique_id=1095287257]
 visible = false

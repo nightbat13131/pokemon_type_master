@@ -1,6 +1,6 @@
 class_name Guess extends Answer
 
-const UNIT = DisplayChoice.GUESS_SIZE.x *.5
+const UNIT = DisplayChoice.PAST_SIZE.x *.5
 const RESULT_RADIUS = UNIT *.45
 
 static var _type_pairings : Array[TypePairs]
@@ -50,8 +50,6 @@ func check_answer(answer: Answer) -> void:
 	for remaining_answer in _answer:
 		if remaining_answer != null:
 			_results_match.append(MatchType.NO_MATCH)
-	##print(_results_match)
-	#print(_results_type)
 
 func is_correct() -> bool:
 	assert(!_results_match.is_empty())
@@ -114,7 +112,7 @@ static func draw_match_type(node: CanvasItem, type_match: TypingMatch ) -> void:
 	var font : Font = node.get_theme_default_font()
 	node.draw_char(font, Vector2.DOWN * 15, text)
 
-func apply_display_index(node: GuessChoice, index: int) -> void:
+func apply_display_index(node: PastChoice, index: int) -> void:
 	node.set_choice(get_choice(index))
 	node.set_result_type(_results_type.get(index))
 	node.set_index(index)

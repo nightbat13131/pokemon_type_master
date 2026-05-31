@@ -30,7 +30,8 @@ static func mouse_in_display(display: DisplayChoice, is_mouse_in: bool) -> void:
 static func mouse_event_from_display(event: InputEventMouse, display: DisplayChoice) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed(): # start of a press
-			_display_pressed = display
+			if display.is_active():
+				_display_pressed = display
 			return # no other checks on this frame
 	if _display_pressed != null:
 		if !event.button_mask & MOUSE_BUTTON_MASK_LEFT: ## button is no longer being held

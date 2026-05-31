@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_t4uq1")
 text = "8<"
-background_color = Color(0.30323282, 0.30323282, 0.30323282, 1)
+background_color = Color(0.5293461, 0.57217604, 0.6791711, 1)
 metadata/_custom_type_script = "uid://cwdb12m8bbdj"

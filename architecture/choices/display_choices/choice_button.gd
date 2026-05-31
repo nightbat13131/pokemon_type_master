@@ -1,11 +1,12 @@
 @tool
-class_name DisplayChoice extends Button
+class_name DisplayChoice extends ButtonEnhanced
 ## click and drag helper https://godot.snoeyz.com/drag-and-drop/
 
 signal choice_pressed(display: DisplayChoice, index: int)
 
 const COMMON_SIZE = Vector2(Choice.DRAW_RADIUS * 2.2, Choice.DRAW_RADIUS * 2.2)
 const GUESS_SIZE = COMMON_SIZE * .75
+const PAST_SIZE =  COMMON_SIZE * .75
 
 @export var event_debug := false
 
@@ -14,8 +15,8 @@ var _index := -1 : set = set_index
 var _result_type := Guess.TypingMatch.INVALID
 
 func _ready() -> void:
+	super._ready()
 	_update_size()
-	pressed.connect(_on_pressed)
 	gui_input.connect(_on_gui_input)
 
 func _update_size() -> void: set_custom_minimum_size(COMMON_SIZE)
@@ -57,4 +58,10 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event_debug: 
 		print(event)
 	if event is InputEventMouse: # or event is InputEventMouseMotion:
-		MouseHelper.mouse_event_from_display(event, self,)
+		MouseHelper.mouse_event_from_display(event, self)
+
+func is_active() -> bool: return !disabled
+
+func deactivate() -> void: set_disabled(true)
+
+func activate() -> void: set_disabled(false)

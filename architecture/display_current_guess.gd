@@ -7,6 +7,7 @@ signal submit_guess(guess: Guess)
 @export var submit_button : Button
 
 var _current_length
+var _answer : Answer
 
 func _ready() -> void:
 	assert(bank != null)
@@ -16,11 +17,15 @@ func _ready() -> void:
 	assert(history != null)
 	history.choice_request.connect(apply_choice)
 
-func set_guess_length(length: int = 4) -> void:
+func set_answer(answer: Answer) -> void:
+	_answer = answer
+	_set_guess_length(_answer.size())
+
+func _set_guess_length(length: int = 4) -> void:
 	_current_length = length
 	var delta = get_child_count() - _current_length 
 	if delta == 0:
-		return
+		guess_start()
 	elif delta > 0: 
 		for i in range(delta):
 			get_child(i).queue_free()
@@ -33,6 +38,7 @@ func guess_start() -> void:
 	for each: CurrentChoice in get_children():
 		assert(each is CurrentChoice)
 		each.set_choice(null)
+		each.activate()
 
 func apply_choice(choice: Choice, index: int = -1) -> void:
 	var target : CurrentChoice
@@ -59,5 +65,16 @@ func _on_submit() -> void:
 		for each in get_children():
 			assert(each is CurrentChoice)
 			if each is CurrentChoice:
-				_guess.add_choice(each.pop_choice())
+				_guess.add_choice(each.get_choice())
+		_guess.check_answer(_answer)
+		if _guess.is_correct():
+			deactivate()
+		else: 
+			guess_start()
 		submit_guess.emit(_guess)
+
+func deactivate() -> void:
+	for each in get_children():
+		assert(each is CurrentChoice)
+		if each is CurrentChoice:
+			each.deactivate()

@@ -31,3 +31,13 @@ func _on_child_entered_tree(node: Node) -> void:
 
 func _on_display_pressed(display: DisplayChoice, _index: int) -> void: 
 	choice_request.emit(display.get_choice())
+
+func deactivate() -> void:
+	for each in get_children():
+		if each is BankChoice:
+			each.deactivate()
+
+func activate() -> void:
+	for each in get_children():
+		if each is BankChoice:
+			each.activate()

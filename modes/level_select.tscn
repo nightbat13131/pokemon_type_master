@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dygyra5uc6alu"]
+
+[ext_resource type="Script" uid="uid://c4bdodec7xvr6" path="res://architecture/level_select.gd" id="1_8kffl"]
+[ext_resource type="Script" uid="uid://cal70an74c3bj" path="res://architecture/level_select_button.gd" id="2_y4fkr"]
+[ext_resource type="PackedScene" uid="uid://dksbowieubfb4" path="res://modes/standard_mode.tscn" id="3_40iyn"]
+[ext_resource type="PackedScene" uid="uid://okhi2yrlvprk" path="res://modes/rps_mode.tscn" id="4_or58o"]
+
+[node name="LevelSelect" type="Control" unique_id=925273166]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8kffl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=158694287]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LevelSelectButton" type="Button" parent="VBoxContainer" unique_id=686680511]
+layout_mode = 2
+text = "Standard"
+script = ExtResource("2_y4fkr")
+level = ExtResource("3_40iyn")
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=2139057864]
+layout_mode = 2
+text = "Rock-Paper-Scisors-Noid"
+script = ExtResource("2_y4fkr")
+level = ExtResource("4_or58o")
