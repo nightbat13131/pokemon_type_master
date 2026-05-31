@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cbxoaiwvq6fsx"]
+
+[ext_resource type="PackedScene" uid="uid://dygyra5uc6alu" path="res://architecture/level_management/level_select.tscn" id="1_ehp0s"]
+
+[node name="GameRoot" type="Node2D" unique_id=1446637176]
+
+[node name="LevelSelect" parent="." unique_id=925273166 node_paths=PackedStringArray("level_holder") instance=ExtResource("1_ehp0s")]
+unique_name_in_owner = true
+level_holder = NodePath("../LevelHolder")
+
+[node name="LevelHolder" type="Node2D" parent="." unique_id=1977364690]

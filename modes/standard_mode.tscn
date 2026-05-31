@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dksbowieubfb4"]
 
-[ext_resource type="Script" uid="uid://b6q7r7rw5ixug" path="res://architecture/master_mind.gd" id="1_l0mgr"]
+[ext_resource type="Script" uid="uid://b6q7r7rw5ixug" path="res://modes/master_mind.gd" id="1_l0mgr"]
 [ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://architecture/choices/choice.gd" id="2_bgpbx"]
 [ext_resource type="Resource" uid="uid://bpxca8gb3gxu7" path="res://architecture/choices/color/choice_a.tres" id="2_bpedg"]
 [ext_resource type="Resource" uid="uid://bsws860m1c0w5" path="res://architecture/choices/color/choice_b.tres" id="4_ylphj"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://cic3vi6gdbs5s" path="res://architecture/show_guess.gd" id="11_ows0h"]
 [ext_resource type="Script" uid="uid://8y004cs87iia" path="res://architecture/display_results.gd" id="13_vwspm"]
 [ext_resource type="Script" uid="uid://ckkeqo3rwt35l" path="res://architecture/mouse_helper.gd" id="14_snfdw"]
-[ext_resource type="Script" uid="uid://7tsw4feeelh6" path="res://modes/scroll_container_enhanced.gd" id="15_nbcya"]
+[ext_resource type="Script" uid="uid://7tsw4feeelh6" path="res://architecture/scroll_container_enhanced.gd" id="15_nbcya"]
 [ext_resource type="Script" uid="uid://dr3pmc78do2we" path="res://architecture/choices/display_choices/past_choice.gd" id="16_76dxq"]
 
 [node name="StandardGame" type="Node2D" unique_id=1501791113]
