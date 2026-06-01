@@ -1,8 +1,9 @@
 class_name MasterMind extends Node2D
 
-@export var all_choices: Array[Choice]
-@export var shuffle_choices := false
-@export var all_type_pairings : Array[TypePairs]
+@export var _choice_details : ModeDetails
+#@export var all_choices: Array[Choice]
+#@export var shuffle_choices := false
+#@export var all_type_pairings : Array[TypePairs]
 @onready var display_current_guess: DispalyCurrentGuess = %DisplayCurrentGuess
 @onready var guess_history: GuessHistory = %"Guess History"
 @onready var submit_button: Button = %SubmitButton
@@ -18,16 +19,17 @@ var this_round_choices: Array[Choice]
 var this_round_pairings: Array[TypePairs]
 
 func _ready() -> void:
+	assert(_choice_details != null)
+	_choice_details.configure_spinbox_choice_count(spin_box_choices)
+	_choice_details.configure_spinbox_password_length(spin_box_length)
 	display_current_guess.submit_guess.connect(_on_guess_submited)
 	button_new_game.pressed.connect(_on_newgame_request)
-	spin_box_choices.set_max(all_choices.size())
 	_on_newgame_request()
 
 func game_start(number_of_choices := 4, password_width := 5) -> void:
-	_generate_choices(number_of_choices)
-	#display_current_guess.set_guess_length(password_width)
-	_generate_pairs()
-	_generate_answer(this_round_choices, password_width)
+	this_round_choices = _choice_details.get_choices(number_of_choices)
+	_choice_details.populate_guess_pairs(this_round_choices)
+	_answer = _choice_details.get_answer(this_round_choices, password_width)
 	display_current_guess.set_answer(_answer)
 	bank_holder.activate()
 	bank_holder.set_bank_list(this_round_choices)
@@ -35,34 +37,13 @@ func game_start(number_of_choices := 4, password_width := 5) -> void:
 	current_guess_holder.show()
 	submit_button.disabled = false
 
-func _generate_choices(count: int) -> void:
-	this_round_choices = all_choices.duplicate()
-	if shuffle_choices:
-		this_round_choices.shuffle()
-	while this_round_choices.size() > count:
-		this_round_choices.pop_back()
-
-func _generate_pairs() -> void:
-	this_round_pairings = []
-	for pair: TypePairs in all_type_pairings:
-		for choice: Choice in this_round_choices:
-			if pair.is_included(choice):
-				this_round_pairings.append(pair)
-				break
-	Guess.set_type_pairings(this_round_pairings)
-
-func _generate_answer(choices : Array[Choice], width: int) -> void:
-	assert(!choices.is_empty())
-	_answer = Answer.new()
-	for i in range(width):
-		_answer.add_choice(choices.pick_random())
-
 func _on_guess_submited(guess: Guess) -> void:
 	guess_history.add_guess(guess)
 	if guess.is_correct():
 		_solved()
 
 func _solved() -> void: 
+	print ("You Win")
 	bank_holder.deactivate()
 	current_guess_holder.hide()
 	submit_button.disabled = true

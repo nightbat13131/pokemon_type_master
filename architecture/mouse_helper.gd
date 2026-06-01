@@ -1,4 +1,5 @@
-class_name MouseHelper extends Node2D
+class_name MouseHelper extends Control
+# control instead of node so that I can "get font" from it to resolve prototype draw timing
 
 static var _instance : MouseHelper
 static var _display_pressed : DisplayChoice
@@ -42,3 +43,9 @@ static func try_drop_choice() -> void:
 	if _mouse_over_display and _display_pressed:
 		_mouse_over_display.drop_in_choice(_display_pressed.get_choice())
 	_display_pressed = null
+
+static func get_font() -> Font:
+	if _instance:
+		var a =_instance.get_theme_default_font() 
+		return a
+	return null

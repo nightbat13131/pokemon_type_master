@@ -1,3 +1,4 @@
+@tool
 class_name TypePairs extends Resource
 
 @export var a_ : Choice

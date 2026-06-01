@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ModeDetails" format=3 uid="uid://jsfsso2j1jk6"]
+
+[ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://architecture/choices/choice.gd" id="1_8y56w"]
+[ext_resource type="Resource" uid="uid://bpxca8gb3gxu7" path="res://architecture/choices/color/choice_a.tres" id="2_wjgat"]
+[ext_resource type="Resource" uid="uid://bsws860m1c0w5" path="res://architecture/choices/color/choice_b.tres" id="3_u4uuh"]
+[ext_resource type="Resource" uid="uid://6al0ihlbivqh" path="res://architecture/choices/color/choice_c.tres" id="4_s5mmy"]
+[ext_resource type="Resource" uid="uid://drwphtqjy84hp" path="res://architecture/choices/color/choice_d.tres" id="5_ru22v"]
+[ext_resource type="Resource" uid="uid://b0s5kbhvup2el" path="res://architecture/choices/color/choice_e.tres" id="6_sllxm"]
+[ext_resource type="Resource" uid="uid://hwtk1tvag4gy" path="res://architecture/choices/color/choice_f.tres" id="7_18tsi"]
+[ext_resource type="Script" uid="uid://cwdb12m8bbdj" path="res://architecture/choices/choice_pairs.gd" id="8_u7x2l"]
+[ext_resource type="Script" uid="uid://82xbqgdoejyt" path="res://modes/mode_details.gd" id="9_arq2r"]
+
+[resource]
+script = ExtResource("9_arq2r")
+_all_choices = Array[ExtResource("1_8y56w")]([ExtResource("2_wjgat"), ExtResource("3_u4uuh"), ExtResource("4_s5mmy"), ExtResource("5_ru22v"), ExtResource("6_sllxm"), ExtResource("7_18tsi")])
+shuffle_choices = true
+metadata/_custom_type_script = "uid://82xbqgdoejyt"

@@ -1,9 +1,9 @@
 @tool
 class_name Choice extends Resource
 
-@export var text: String
-@export var background_color : Color
-@export var text_color := Color.BLACK
+@export var text: String : set = set_text
+@export var background_color : Color : set = set_bg_color
+@export var text_color := Color.BLACK : set = set_text_color
 
 static var font : Font
 
@@ -24,3 +24,9 @@ static func _common_draw(node: CanvasItem, center: Vector2, bg_color: Color, tx_
 
 static func remote_void_draw(node: CanvasItem, center: Vector2) -> void:
 	_common_draw(node, center, Color.WEB_GRAY, Color.BLUE, "_")
+
+func set_text(string: String) -> void: text = string
+
+func set_bg_color(color: Color) -> void: background_color = color
+
+func set_text_color(color: Color) -> void: text_color = color

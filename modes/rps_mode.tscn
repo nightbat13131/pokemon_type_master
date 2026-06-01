@@ -1,31 +1,122 @@
 [gd_scene format=3 uid="uid://okhi2yrlvprk"]
 
 [ext_resource type="PackedScene" uid="uid://dksbowieubfb4" path="res://modes/standard_mode.tscn" id="1_2q437"]
-[ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://architecture/choices/choice.gd" id="2_b7o3g"]
+[ext_resource type="Resource" uid="uid://dhgph770cakar" path="res://architecture/choices/r_p_s/rps_details.tres" id="2_y60u7"]
 [ext_resource type="Resource" uid="uid://s34syr707lcn" path="res://architecture/choices/r_p_s/paper.tres" id="3_4yiwe"]
 [ext_resource type="Resource" uid="uid://buscd0ifjj4m5" path="res://architecture/choices/r_p_s/rock.tres" id="4_v7cd8"]
 [ext_resource type="Resource" uid="uid://b2nnyswfkkn1h" path="res://architecture/choices/r_p_s/scisors.tres" id="5_b7o3g"]
 [ext_resource type="Resource" uid="uid://c55dohvden31p" path="res://architecture/choices/r_p_s/void.tres" id="6_acgrr"]
-[ext_resource type="Script" uid="uid://cwdb12m8bbdj" path="res://architecture/choices/choice_pairs.gd" id="7_acgrr"]
-[ext_resource type="Resource" uid="uid://b3tb4sdje5vh6" path="res://architecture/choices/r_p_s/_p_s.tres" id="8_3hm34"]
 [ext_resource type="Resource" uid="uid://bj1lk7h6vps6c" path="res://architecture/choices/r_p_s/_r_p.tres" id="9_ty3yw"]
-[ext_resource type="Resource" uid="uid://cc1a3ghdjka1s" path="res://architecture/choices/r_p_s/_s_r.tres" id="10_660fc"]
+[ext_resource type="Script" uid="uid://dr3pmc78do2we" path="res://architecture/choices/display_choices/past_choice.gd" id="11_ty3yw"]
+[ext_resource type="Script" uid="uid://dqa8nmo3ukwpi" path="res://architecture/choices/show_choice_pair_hint.gd" id="12_660fc"]
 
 [node name="RPSGame" unique_id=1501791113 instance=ExtResource("1_2q437")]
-all_choices = Array[ExtResource("2_b7o3g")]([ExtResource("3_4yiwe"), ExtResource("4_v7cd8"), ExtResource("5_b7o3g"), ExtResource("6_acgrr")])
-all_type_pairings = Array[ExtResource("7_acgrr")]([ExtResource("8_3hm34"), ExtResource("9_ty3yw"), ExtResource("10_660fc")])
+_choice_details = ExtResource("2_y60u7")
 
-[node name="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer2" parent_id_path=PackedInt32Array(553065913) index="1" unique_id=1816807997]
+[node name="Label" parent="Game/Control/MarginContainer/VBoxContainer/HBoxContainer2" parent_id_path=PackedInt32Array(553065913) index="1" unique_id=1816807997]
 text = "Rock - Paper - Scissors - Noid"
 
-[node name="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="0" unique_id=1674793125]
+[node name="Label" parent="Game/Control/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="0" unique_id=1674793125]
 visible = false
 
-[node name="SpinBoxChoices" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="1" unique_id=1724085622]
+[node name="SpinBoxChoices" parent="Game/Control/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="1" unique_id=1724085622]
 visible = false
 min_value = 4.0
 max_value = 4.0
 value = 4.0
 
-[node name="Control" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="2" unique_id=1095287257]
+[node name="Control" parent="Game/Control/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GameConfigHolder" parent_id_path=PackedInt32Array(1878683474) index="2" unique_id=1095287257]
 visible = false
+
+[node name="Hint" parent="." index="1" unique_id=1753593716]
+visible = true
+
+[node name="Node2D" type="Node2D" parent="Hint/Control/PanelContainer" parent_id_path=PackedInt32Array(1723744375) index="0" unique_id=1996937420]
+metadata/_edit_lock_ = true
+
+[node name="A_1" type="Button" parent="Hint/Control/PanelContainer/Node2D" index="0" unique_id=1622707968]
+custom_minimum_size = Vector2(49.5, 49.5)
+offset_left = 21.0
+offset_top = 44.0
+offset_right = 100.0
+offset_bottom = 128.0
+size_flags_horizontal = 4
+text = "A"
+script = ExtResource("11_ty3yw")
+_choice = ExtResource("4_v7cd8")
+
+[node name="A_2" type="Button" parent="Hint/Control/PanelContainer/Node2D" index="1" unique_id=155868091]
+custom_minimum_size = Vector2(49.5, 49.5)
+offset_left = 143.0
+offset_top = 57.0
+offset_right = 222.0
+offset_bottom = 141.0
+size_flags_horizontal = 4
+text = "A"
+script = ExtResource("11_ty3yw")
+_choice = ExtResource("3_4yiwe")
+
+[node name="A_3" type="Button" parent="Hint/Control/PanelContainer/Node2D" index="2" unique_id=558134570]
+custom_minimum_size = Vector2(49.5, 49.5)
+offset_left = 260.0
+offset_top = 56.0
+offset_right = 339.0
+offset_bottom = 140.0
+size_flags_horizontal = 4
+text = "A"
+script = ExtResource("11_ty3yw")
+_choice = ExtResource("5_b7o3g")
+
+[node name="A_4" type="Button" parent="Hint/Control/PanelContainer/Node2D" index="3" unique_id=1999745804]
+custom_minimum_size = Vector2(49.5, 49.5)
+offset_left = 370.0
+offset_top = 58.0
+offset_right = 449.0
+offset_bottom = 142.0
+size_flags_horizontal = 4
+text = "A"
+script = ExtResource("11_ty3yw")
+_choice = ExtResource("6_acgrr")
+
+[node name="G_1" type="Button" parent="Hint/Control/PanelContainer/Node2D" index="4" unique_id=1329815898]
+custom_minimum_size = Vector2(49.5, 49.5)
+offset_left = 44.0
+offset_top = 194.0
+offset_right = 123.0
+offset_bottom = 278.0
+size_flags_horizontal = 4
+text = "A"
+script = ExtResource("11_ty3yw")
+_choice = ExtResource("3_4yiwe")
+
+[node name="G_2" type="Button" parent="Hint/Control/PanelContainer/Node2D" index="5" unique_id=487873858]
+custom_minimum_size = Vector2(49.5, 49.5)
+offset_left = 153.0
+offset_top = 194.0
+offset_right = 232.0
+offset_bottom = 278.0
+size_flags_horizontal = 4
+text = "A"
+script = ExtResource("11_ty3yw")
+_choice = ExtResource("4_v7cd8")
+
+[node name="ShowChoicePairHint" type="Line2D" parent="Hint/Control/PanelContainer/Node2D" index="6" unique_id=1730685606 node_paths=PackedStringArray("_answer_side", "_attack_side")]
+points = PackedVector2Array(47, 111, 61, 210)
+script = ExtResource("12_660fc")
+_answer_side = NodePath("../A_1")
+_attack_side = NodePath("../G_1")
+_choice_pair = ExtResource("9_ty3yw")
+
+[node name="ShowChoicePairHint3" type="Line2D" parent="Hint/Control/PanelContainer/Node2D" index="7" unique_id=769498969 node_paths=PackedStringArray("_answer_side", "_attack_side")]
+points = PackedVector2Array(84, 111, 171, 214)
+script = ExtResource("12_660fc")
+_answer_side = NodePath("../A_1")
+_attack_side = NodePath("../G_2")
+
+[node name="ShowChoicePairHint2" type="Line2D" parent="Hint/Control/PanelContainer/Node2D" index="8" unique_id=1163535575 node_paths=PackedStringArray("_answer_side", "_attack_side")]
+position = Vector2(-3, 1)
+points = PackedVector2Array(185, 93, 178, 204)
+script = ExtResource("12_660fc")
+_answer_side = NodePath("../A_2")
+_attack_side = NodePath("../G_2")
+_choice_pair = ExtResource("9_ty3yw")

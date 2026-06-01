@@ -1,4 +1,4 @@
-class_name DispalyCurrentGuess extends HBoxContainer
+class_name DispalyCurrentGuess extends Container
 
 signal submit_guess(guess: Guess)
 

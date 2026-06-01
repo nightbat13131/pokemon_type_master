@@ -5,6 +5,7 @@ const RESULT_RADIUS = UNIT *.45
 
 static var _type_pairings : Array[TypePairs]
 static var _tester : PairingTester
+static var _font : Font
 
 enum MatchType {
 	NO_MATCH = 0,
@@ -16,7 +17,9 @@ enum TypingMatch {
 	INVALID = -1,
 	NA = 0,
 	WIN = 1,
-	LOSS = 2
+	LOSS = 2,
+	TOO_HIGH = 3,
+	TOO_LOW = 4,
 }
 
 var _results_match : Array[MatchType]
@@ -98,7 +101,7 @@ static func set_type_pairings(list: Array[TypePairs]) -> void:
 	_type_pairings = list
 	_tester = PairingTester.new(list)
 
-static func draw_match_type(node: CanvasItem, type_match: TypingMatch ) -> void:
+static func draw_match_type(node: CanvasItem, type_match: TypingMatch, position := Vector2.DOWN * 15 ) -> void:
 	var text := ""
 	match type_match:
 		TypingMatch.NA, TypingMatch.INVALID:
@@ -107,10 +110,15 @@ static func draw_match_type(node: CanvasItem, type_match: TypingMatch ) -> void:
 			text = "W"
 		TypingMatch.LOSS:
 			text = "L"
+		TypingMatch.TOO_HIGH:
+			text = "v"
+		TypingMatch.TOO_LOW:
+			text = "^"
 		_: 
 			"?"
-	var font : Font = node.get_theme_default_font()
-	node.draw_char(font, Vector2.DOWN * 15, text)
+	if _font == null:
+		_font = MouseHelper.get_font()
+	node.draw_char(_font, position , text)
 
 func apply_display_index(node: PastChoice, index: int) -> void:
 	node.set_choice(get_choice(index))
@@ -126,6 +134,8 @@ class PairingTester:
 		_type_pairs = {}
 	
 	func attack_result(attacker: Choice, defender: Choice) -> TypingMatch:
+		if attacker is HighLow_Choice:
+			return _high_low_result(defender, attacker)
 		if _type_pairings.is_empty():
 			return Guess.TypingMatch.NA
 		if !_type_pairs.keys().has(attacker):
@@ -143,3 +153,10 @@ class PairingTester:
 		for pairing in _type_pairings:
 			if pairing.is_included(focus):
 				_type_pairs[focus].append(pairing)
+
+	func _high_low_result(answer: HighLow_Choice, guess: HighLow_Choice) -> TypingMatch:
+		if guess.get_value() < answer.get_value():
+			return TypingMatch.TOO_LOW
+		elif guess.get_value() > answer.get_value():
+			return TypingMatch.TOO_HIGH
+		return TypingMatch.NA

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="HighLowMode" format=3 uid="uid://k0xctpbuvwrq"]
+
+[ext_resource type="Script" uid="uid://csorft80wcwdu" path="res://architecture/choices/choice.gd" id="1_4ymqq"]
+[ext_resource type="Script" uid="uid://cwdb12m8bbdj" path="res://architecture/choices/choice_pairs.gd" id="2_5pbrw"]
+[ext_resource type="Script" uid="uid://djju58mh33mwg" path="res://architecture/choices/high_low/high_low_details.gd" id="3_wem7b"]
+
+[resource]
+script = ExtResource("3_wem7b")
+_max_characters = 16
+metadata/_custom_type_script = "uid://djju58mh33mwg"
